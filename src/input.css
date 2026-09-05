@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-green: #28e98c;
+  --color-surface-dark: #0a0a0a;
+  --color-surface-card: #121212;
+  --color-surface-border: #222222;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
