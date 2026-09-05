@@ -1,14 +1,80 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-green: #28e98c;
-  --color-surface-dark: #0a0a0a;
-  --color-surface-card: #121212;
-  --color-surface-border: #222222;
+  --color-brand-blue: #3b82f6;
+  --color-brand-blue-hover: #2563eb;
+  --color-brand-blue-glow: rgba(59, 130, 246, 0.18);
+  --color-canvas-black: #000000;
+  --color-surface-card: #101010;
+  --color-surface-border: #1f1f1f;
   --font-sans: 'Inter', system-ui, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
 html {
   scroll-behavior: smooth;
+  background-color: #000000;
+}
+
+/* Ambient Radial Glow */
+.bg-ambient-glow {
+  background-image: radial-gradient(ellipse 80% 50% at 50% -15%, rgba(59, 130, 246, 0.15), rgba(0, 0, 0, 0));
+  background-repeat: no-repeat;
+}
+
+/* ResuMate Premium Card Elevation */
+.resumate-card {
+  background-color: #101010;
+  border: 1px solid #1f1f1f;
+  border-radius: 28px;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.resumate-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(59, 130, 246, 0.4);
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.8), 0 0 25px -5px rgba(59, 130, 246, 0.15);
+}
+
+/* Section Pill Header */
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid #1f1f1f;
+  background-color: #101010;
+  color: #c2c2c2;
+  font-size: 11px;
+  font-family: var(--font-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Floating Dock Item */
+.nav-dock-item {
+  transition: all 0.2s ease;
+}
+.nav-dock-item:hover {
+  color: #3b82f6;
+  transform: scale(1.15);
+}
+/* Sleek Minimalist Dark Scrollbar (Eliminating Clunky Windows Default) */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1f1f1f;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b82f6;
 }

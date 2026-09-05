@@ -1,14 +1,759 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en" class="dark scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammad Niyas | Golang Backend Developer</title>
+  <title>Mohammad Niyas</title>
+  
+  <!-- Favicon / Tab Title Image (Circular) -->
+  <link rel="icon" type="image/png" href="./assets/images/favicon-circle.png">
+  <link rel="apple-touch-icon" href="./assets/images/favicon-circle.png">
+
+  <!-- Open Graph & Social Preview Image -->
+  <meta property="og:title" content="Mohammad Niyas — Golang Backend Developer">
+  <meta property="og:description" content="Backend engineer specializing in distributed systems, Go concurrency, and high-throughput microservices.">
+  <meta property="og:image" content="https://github.com/Mohammad-Niyas.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="@niyas_dev">
+  <meta name="twitter:image" content="https://github.com/Mohammad-Niyas.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Compiled CSS -->
   <link rel="stylesheet" href="./dist/output.css">
 </head>
-<body class="bg-surface-dark text-neutral-100 min-h-screen">
-  <div class="max-w-7xl mx-auto px-4 lg:px-8 py-8 lg:py-12">
-    <h1 class="text-xl font-mono text-brand-green">Pipeline Initialized</h1>
+<body class="bg-black text-white font-sans antialiased min-h-screen selection:bg-[#3b82f6] selection:text-white bg-ambient-glow">
+
+  <!-- ========================================== -->
+  <!-- FLOATING RIGHT QUICK-NAV DOCK (Desktop)    -->
+  <!-- ========================================== -->
+  <nav class="fixed right-6 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-5 p-3.5 bg-[#101010]/80 backdrop-blur-xl border border-[#1f1f1f] rounded-full z-50 shadow-2xl">
+    <a href="#home" class="nav-dock-item text-neutral-400 p-2" title="Home" aria-label="Home">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+    </a>
+    <a href="#about" class="nav-dock-item text-neutral-400 p-2" title="About" aria-label="About">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+    </a>
+    <a href="#projects" class="nav-dock-item text-neutral-400 p-2" title="Projects" aria-label="Projects">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+    </a>
+    <a href="#skills" class="nav-dock-item text-neutral-400 p-2" title="Skills" aria-label="Skills">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+    </a>
+    <a href="#education" class="nav-dock-item text-neutral-400 p-2" title="Education" aria-label="Education">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+    </a>
+    <a href="#contact" class="nav-dock-item text-neutral-400 p-2" title="Contact" aria-label="Contact">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+    </a>
+  </nav>
+
+  <!-- Main Responsive Container -->
+  <div id="home" class="max-w-[1360px] mx-auto px-4 sm:px-6 lg:px-12 pt-12 lg:pt-16 pb-24">
+    <div class="flex flex-col lg:flex-row gap-12 lg:gap-16 items-start">
+      
+      <!-- ========================================== -->
+      <!-- LEFT STICKY SIDEBAR (Exact ResuMate Match) -->
+      <!-- ========================================== -->
+      <aside class="w-full lg:w-[350px] shrink-0 lg:sticky lg:top-12 self-start z-30">
+        <div class="resumate-card p-6 sm:p-7 flex flex-col items-center text-center">
+          
+          <!-- Profile Picture (Natural Color, Rounded Box) -->
+          <div class="relative w-full aspect-[4/4.2] rounded-[24px] overflow-hidden mb-6 border border-[#222222] bg-[#141414] shadow-inner">
+            <img 
+              src="https://github.com/Mohammad-Niyas.png" 
+              alt="Mohammad Niyas" 
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Available for work Badge -->
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#161616] border border-[#262626] text-xs text-neutral-300 mb-4 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Available for work
+          </div>
+
+          <!-- Name (Centered, High-Impact) -->
+          <h1 class="text-2xl sm:text-[26px] font-bold text-white tracking-tight font-display mb-6">
+            Mohammad Niyas
+          </h1>
+
+          <!-- Social Icons (5 Rounded Squares Matching Reference) -->
+          <div class="flex items-center justify-center gap-2.5 w-full text-neutral-400 mb-7">
+            <!-- GitHub -->
+            <a href="https://github.com/Mohammad-Niyas" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-[#222] bg-[#161616] flex items-center justify-center hover:text-white hover:border-[#3b82f6]/50 transition" aria-label="GitHub">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+            </a>
+            <!-- X (Twitter) -->
+            <a href="https://x.com/niyas_dev" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-[#222] bg-[#161616] flex items-center justify-center hover:text-white hover:border-[#3b82f6]/50 transition" aria-label="X (Twitter)">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com/in/mohammad-niyas" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-[#222] bg-[#161616] flex items-center justify-center hover:text-white hover:border-[#3b82f6]/50 transition" aria-label="LinkedIn">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+            </a>
+            <!-- LeetCode -->
+            <a href="https://leetcode.com/u/Mohammad-Niyas" target="_blank" rel="noopener noreferrer" class="w-10 h-10 rounded-xl border border-[#222] bg-[#161616] flex items-center justify-center hover:text-white hover:border-[#3b82f6]/50 transition" aria-label="LeetCode">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 4.818 3.522 5.86 5.86 0 0 0 2.684-.338 5.96 5.96 0 0 0 1.258-.695l4.37-3.921c.548-.485.835-1.19.78-1.918a2.128 2.128 0 0 0-.853-1.583 2.158 2.158 0 0 0-1.713-.396 2.164 2.164 0 0 0-1.464.954l-4.108 3.687a3.75 3.75 0 0 1-.789.436 3.666 3.666 0 0 1-1.68.211 3.71 3.71 0 0 1-3.01-2.203 3.46 3.46 0 0 1-.218-.636 3.454 3.454 0 0 1-.038-1.477 3.292 3.292 0 0 1 .755-1.315L8.43 7.828l4.478-4.793a.21.21 0 0 1 .151-.069.21.21 0 0 1 .151.069l7.07 7.07a.21.21 0 0 1 0 .298l-1.455 1.455a.21.21 0 0 1-.298 0l-5.322-5.322a1.374 1.374 0 0 0-1.942 1.942l5.322 5.322a2.958 2.958 0 0 0 4.182 0l1.455-1.455a2.958 2.958 0 0 0 0-4.182L14.444.438A1.374 1.374 0 0 0 13.483 0zm-2.866 12.815a1.374 1.374 0 0 0-1.943 0l-3.322 3.322a1.374 1.374 0 0 0 1.943 1.943l3.322-3.322a1.374 1.374 0 0 0 0-1.943z"/></svg>
+            </a>
+                        <!-- Email Icon in Social Strip -->
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammadniyas662@gmail.com" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="w-10 h-10 rounded-xl border border-[#222] bg-[#161616] flex items-center justify-center hover:text-white hover:border-[#3b82f6]/50 transition" 
+              aria-label="Email via Gmail"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </a>
+          </div>
+
+          <!-- Two Side-by-Side Action Buttons (Matching Screenshot) -->
+          <div class="grid grid-cols-2 gap-3 w-full">
+            <!-- Locate this anchor in the left sidebar -->
+<a 
+  href="./assets/docs/Mohammad_Niyas_Resume.pdf" 
+  target="_blank" 
+  rel="noopener noreferrer"
+  download="Mohammad_Niyas_Resume.pdf"
+  class="bg-[#181818] border border-[#282828] hover:border-neutral-500 text-neutral-200 hover:text-white font-medium text-xs py-3 px-3 rounded-xl flex items-center justify-center gap-2 transition active:scale-[0.98]"
+>
+  <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+  Download CV
+</a>
+
+                        <!-- Contact Me Button in Profile Card -->
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammadniyas662@gmail.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              class="bg-[#3b82f6] hover:bg-[#2563eb] text-white font-semibold text-xs py-3 px-3 rounded-xl flex items-center justify-center gap-2 transition shadow-lg shadow-blue-500/25 active:scale-[0.98]"
+            >
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+              Contact Me
+            </a>
+          </div>
+
+        </div>
+      </aside>
+
+      <!-- ========================================== -->
+      <!-- RIGHT COLUMN: MAIN CONTENT                 -->
+      <!-- ========================================== -->
+      <main class="flex-1 min-w-0 space-y-24 w-full">
+        
+                <!-- ========================================== -->
+        <!-- SECTION 1: HERO & VALUE PROPOSITION        -->
+        <!-- ========================================== -->
+        <section id="about" class="space-y-12">
+          
+          <!-- Section Pill -->
+          <div class="section-pill">
+            👋 Say Hello
+          </div>
+          
+          <!-- Display Heading & Intro -->
+          <div class="space-y-6">
+                        <h2 class="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-white leading-[1.12] font-display min-h-[1.12em]">
+              I'm Mohammad Niyas,<br>
+              <span class="inline-flex items-center">
+                <span id="typewriter-text" class="text-[#3b82f6]">Backend Engineer</span>
+                <span id="typewriter-cursor" class="text-[#3b82f6] ml-1 animate-pulse font-normal">|</span>
+              </span><br>
+              Based in Kerala, India.
+            </h2>
+            
+            <!-- Hero Paragraph (Clean, Powerful, Non-Tech Friendly) -->
+            <div class="space-y-4 max-w-3xl text-neutral-300 text-base sm:text-lg leading-relaxed font-light">
+              <p>
+                I build the <strong class="text-white font-medium">high-performance backends</strong> and <strong class="text-white font-medium">database architectures</strong> that power modern web platforms.
+              </p>
+              <p class="text-neutral-400 text-sm sm:text-base">
+                My focus is on system reliability: making sure web applications don't crash when thousands of users hit the server at once, payments and sensitive data stay 100% accurate, and backend infrastructure scales efficiently without massive cloud costs.
+              </p>
+              <div class="pt-2 flex flex-wrap items-center gap-2 text-xs font-mono text-[#3b82f6]">
+                <span class="px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/30">Go (Golang)</span>
+                <span class="px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/30">Distributed Caching</span>
+                <span class="px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/30">Cloud Infrastructure</span>
+                <span class="text-neutral-500 ml-1">&middot; Open to Roles across India &amp; Global Remote</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3 System Design Value Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-4">
+            
+            <!-- Card 1: High-Concurrency & Traffic Control -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#141414] border border-[#222] flex items-center justify-center text-[#3b82f6] shadow-sm">
+                  <!-- Lightning / Concurrency Icon -->
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                </div>
+                <div>
+                  <span class="text-[#3b82f6] font-mono text-[11px] uppercase tracking-wider font-semibold">Traffic Control</span>
+                  <h3 class="text-white font-bold text-lg font-display mt-1">High-Concurrency &amp; Traffic Control</h3>
+                  <h4 class="text-neutral-300 text-xs font-medium mt-1">Handling Simultaneous Traffic Without Failures</h4>
+                </div>
+                <p class="text-neutral-400 text-xs leading-relaxed pt-1">
+                  I design systems that handle massive spikes in simultaneous user activity. By using smart in-memory locks and automated traffic-limiting, I stop server crashes, eliminate duplicate requests, and ensure every user gets a smooth, uninterrupted response.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 2: Data Integrity & Secure Transactions -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#141414] border border-[#222] flex items-center justify-center text-[#3b82f6] shadow-sm">
+                  <!-- Shield / Database Lock Icon -->
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+                </div>
+                <div>
+                  <span class="text-[#3b82f6] font-mono text-[11px] uppercase tracking-wider font-semibold">Data Integrity</span>
+                  <h3 class="text-white font-bold text-lg font-display mt-1">Data Integrity &amp; Transactions</h3>
+                  <h4 class="text-neutral-300 text-xs font-medium mt-1">Zero-Loss Data &amp; Financial Accuracy</h4>
+                </div>
+                <p class="text-neutral-400 text-xs leading-relaxed pt-1">
+                  Whether it's processing payments, updating inventory, or managing account permissions, I build database workflows where records never get corrupted or lost midway. Critical actions execute with 100% consistency or roll back safely.
+                </p>
+              </div>
+            </div>
+
+            <!-- Card 3: Scalable Architecture & Cost Optimization -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-2xl bg-[#141414] border border-[#222] flex items-center justify-center text-[#3b82f6] shadow-sm">
+                  <!-- Gauge / Cloud Cost Icon -->
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                </div>
+                <div>
+                  <span class="text-[#3b82f6] font-mono text-[11px] uppercase tracking-wider font-semibold">Cost &amp; Scale</span>
+                  <h3 class="text-white font-bold text-lg font-display mt-1">Scalable Architecture &amp; Cost</h3>
+                  <h4 class="text-neutral-300 text-xs font-medium mt-1">Sub-Second Speed at Lower Cloud Costs</h4>
+                </div>
+                <p class="text-neutral-400 text-xs leading-relaxed pt-1">
+                  I architect systems with multi-layered caching, direct cloud storage, and clean service layers. This keeps response times under milliseconds and minimizes CPU/bandwidth waste — allowing platforms to scale up users without multiplying hosting bills.
+                </p>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+                <!-- ========================================== -->
+        <!-- SECTION 2: FLAGSHIP SYSTEMS                -->
+        <!-- ========================================== -->
+        <section id="projects" class="space-y-8">
+          
+          <!-- Section Pill Header -->
+          <div class="section-pill">
+            ⚡ Featured Projects
+          </div>
+
+          <div class="space-y-8">
+
+            <!-- PROJECT 1: BookMyVenue -->
+            <article class="resumate-card p-8 sm:p-10 space-y-7">
+              
+              <!-- Card Header -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1c1c1c] pb-6">
+                <div>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight font-display">BookMyVenue</h3>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-xs">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6] animate-pulse"></span>
+                      Active Flagship &middot; Open Source
+                    </span>
+                  </div>
+                  <p class="text-neutral-400 text-sm font-mono mt-1.5">Distributed Venue Reservation &amp; Transaction Engine</p>
+                </div>
+
+                <a 
+                  href="https://github.com/Mohammad-Niyas/BookMyVenue" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#141414] border border-[#222] text-xs font-mono text-neutral-200 hover:text-[#3b82f6] hover:border-[#3b82f6]/40 transition active:scale-[0.98] self-start sm:self-auto"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  Source Code
+                </a>
+              </div>
+
+              <!-- Technical Deep-Dive Bullets (Problem -> Solution -> Impact) -->
+              <div class="space-y-3.5 text-sm text-neutral-300 leading-relaxed">
+                
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Distributed Concurrency Guard:</strong> 
+                    Engineered a 10-minute temporary inventory reservation engine via Redis distributed locks (<code class="text-[#3b82f6] bg-[#161616] px-1.5 py-0.5 rounded font-mono text-xs">SET NX</code> with TTL &amp; rollback compensation), eliminating double-booking collisions under high concurrent checkout traffic without locking the primary database.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Atomic Multi-Milestone Settlement:</strong> 
+                    Designed a 2-stage (30% advance / 70% final) payment workflow integrated with Razorpay; guarantees financial data integrity using HMAC-SHA256 signature verification and atomic 4-table PostgreSQL transactions with append-only audit logging.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Resilient Traffic Shaping:</strong> 
+                    Implemented an in-memory Token Bucket rate limiter in Redis using custom Lua scripts with fail-open safety, protecting public authentication and booking APIs against brute-force attacks and bot scrapers.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Non-Blocking Asset &amp; Content Pipelines:</strong> 
+                    Built a direct-to-S3 presigned upload workflow to eliminate server bandwidth bottlenecks, paired with a shadow-copy draft engine (<code class="text-neutral-200 font-mono text-xs">VenueEditDraft</code>) allowing owners to update live venues without unpublishing them during admin moderation.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="pt-4 flex flex-wrap gap-2 border-t border-[#1a1a1a]">
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Go (Golang)</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">PostgreSQL</span>
+                <span class="px-3 py-1 bg-blue-950/40 border border-blue-500/30 rounded-full text-xs font-mono text-[#60a5fa]">Redis SET NX</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">AWS S3</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Razorpay</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Docker</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Clean Architecture</span>
+              </div>
+
+            </article>
+
+            <!-- PROJECT 2: VogueLuxe -->
+            <article class="resumate-card p-8 sm:p-10 space-y-7">
+              
+              <!-- Card Header -->
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#1c1c1c] pb-6">
+                <div>
+                  <div class="flex flex-wrap items-center gap-3">
+                    <h3 class="text-2xl sm:text-3xl font-bold text-white tracking-tight font-display">VogueLuxe</h3>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-xs">
+                      <span class="w-1.5 h-1.5 rounded-full bg-[#3b82f6]"></span>
+                      Production Deployment &middot; AWS Cloud
+                    </span>
+                  </div>
+                  <p class="text-neutral-400 text-sm font-mono mt-1.5">Cloud-Native Microservices E-Commerce Platform</p>
+                </div>
+
+                <a 
+                  href="https://github.com/Mohammad-Niyas/VogueLuxe-Ecommerce-Microservices" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#141414] border border-[#222] text-xs font-mono text-neutral-200 hover:text-[#3b82f6] hover:border-[#3b82f6]/40 transition active:scale-[0.98] self-start sm:self-auto"
+                >
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                  Source Code
+                </a>
+              </div>
+
+              <!-- Technical Deep-Dive Bullets -->
+              <div class="space-y-3.5 text-sm text-neutral-300 leading-relaxed">
+                
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">gRPC Service Decomposition:</strong> 
+                    Extracted high-velocity domains (Wallet &amp; Wishlist) from a monolithic core into standalone gRPC microservices using Protocol Buffers, achieving strict service fault isolation and sub-millisecond inter-service RPC latency.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Reverse-Proxy API Gateway:</strong> 
+                    Built an edge gateway handling centralized JWT authentication, role-based route access controls (RBAC), and protocol translation from incoming client HTTP requests to internal gRPC invocations.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Double-Entry Financial Ledger:</strong> 
+                    Designed a transactional wallet ledger implementing double-entry bookkeeping rules to guarantee strict credit-debit balance consistency across async payment gateway webhooks.
+                  </p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-[#3b82f6] mt-1 font-mono text-xs">&#9656;</span>
+                  <p>
+                    <strong class="text-white font-medium">Automated Kubernetes Operations:</strong> 
+                    Packaged services with multi-stage Docker builds and automated CI/CD deployment pipelines via GitHub Actions into an AWS EKS Kubernetes cluster with zero-downtime rolling updates.
+                  </p>
+                </div>
+
+              </div>
+
+              <!-- Tech Stack Tags -->
+              <div class="pt-4 flex flex-wrap gap-2 border-t border-[#1a1a1a]">
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Go (Golang)</span>
+                <span class="px-3 py-1 bg-blue-950/40 border border-blue-500/30 rounded-full text-xs font-mono text-[#60a5fa]">gRPC &amp; Protobuf</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">PostgreSQL</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">MongoDB</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">Docker</span>
+                <span class="px-3 py-1 bg-blue-950/40 border border-blue-500/30 rounded-full text-xs font-mono text-[#60a5fa]">AWS EKS</span>
+                <span class="px-3 py-1 bg-[#141414] border border-[#222] rounded-full text-xs font-mono text-neutral-300">GitHub Actions</span>
+              </div>
+
+            </article>
+
+          </div>
+                      <!-- ========================================== -->
+            <!-- SUB-SECTION: SPECIALIZED SYSTEMS & MVPS    -->
+            <!-- ========================================== -->
+            <div class="pt-6 space-y-4">
+              
+              <div class="flex items-center gap-3">
+                <h4 class="text-lg font-bold text-white font-display tracking-tight">Specialized Systems &amp; Product MVPs</h4>
+                <div class="h-px flex-1 bg-[#1e1e1e]"></div>
+              </div>
+
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+                <!-- PROJECT 3: Split Expense System -->
+                <article class="resumate-card p-7 space-y-4 flex flex-col justify-between">
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[#3b82f6] font-mono text-[11px] uppercase tracking-wider font-semibold">Microservices Architecture</span>
+                      <a 
+                        href="https://github.com/Mohammad-Niyas/Split-Expense-System-Microservices" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="text-neutral-400 hover:text-white transition"
+                        aria-label="GitHub Repository"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                      </a>
+                    </div>
+                    <h5 class="text-white font-bold text-lg font-display">Split Expense System</h5>
+                    <p class="text-neutral-400 text-xs leading-relaxed">
+                      Microservices engine (Auth, Group, Expense) built with Go-Kit and gRPC. Computes multi-party balance reconciliation with <code class="text-neutral-300 font-mono">EQUAL</code> &amp; <code class="text-neutral-300 font-mono">EXACT</code> debt-split algorithms across isolated PostgreSQL databases.
+                    </p>
+                  </div>
+                  <div class="pt-3 flex flex-wrap gap-1.5 border-t border-[#1c1c1c]">
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">Go (Golang)</span>
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-[#3b82f6]">gRPC &amp; Protobuf</span>
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">Go-Kit</span>
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">PostgreSQL</span>
+                  </div>
+                </article>
+
+                <!-- PROJECT 4: ELAYIL -->
+                <article class="resumate-card p-7 space-y-4 flex flex-col justify-between">
+                  <div class="space-y-3">
+                    <div class="flex items-center justify-between">
+                      <span class="text-[#3b82f6] font-mono text-[11px] uppercase tracking-wider font-semibold">AI Extraction &amp; Product MVP</span>
+                      <a 
+                        href="https://github.com/Mohammad-Niyas/Elayil" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        class="text-neutral-400 hover:text-white transition"
+                        aria-label="GitHub Repository"
+                      >
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                      </a>
+                    </div>
+                    <h5 class="text-white font-bold text-lg font-display">ELAYIL &mdash; Food Discovery Pipeline</h5>
+                    <p class="text-neutral-400 text-xs leading-relaxed">
+                      AI-powered ETL pipeline converting Instagram reel metadata into structured food datasets. Leverages Groq LLaMA-3.3 70B for JSON entity extraction and PostgreSQL for multi-criteria full-text search.
+                    </p>
+                  </div>
+                  <div class="pt-3 flex flex-wrap gap-1.5 border-t border-[#1c1c1c]">
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">Go (Gin)</span>
+                    <span class="px-2.5 py-0.5 bg-blue-950/40 border border-blue-500/30 rounded text-[11px] font-mono text-[#60a5fa]">Groq LLM (70B)</span>
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">PostgreSQL</span>
+                    <span class="px-2.5 py-0.5 bg-[#161616] border border-[#222] rounded text-[11px] font-mono text-neutral-300">Docker</span>
+                  </div>
+                </article>
+
+              </div>
+            </div>
+
+        </section>
+
+                <!-- ========================================== -->
+        <!-- SECTION 3: TECHNICAL SKILLS & EXPERTISE    -->
+        <!-- ========================================== -->
+        <section id="skills" class="space-y-8">
+          
+          <!-- Section Pill -->
+          <div class="section-pill">
+            🛠️ Skills &amp; Expertise
+          </div>
+
+          <!-- 2x2 Clean Balanced Matrix -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- CARD 1: Language & Runtime -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Language &amp; Runtime</h3>
+                  <p class="text-neutral-500 text-xs font-mono mt-0.5">Core language mastery &amp; concurrency models</p>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-[11px]">Runtime</span>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">Go (Golang)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">Goroutines &amp; Channels</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">Sync Primitives (Mutex, WaitGroup)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">Context &amp; Cancellation</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-300">Memory Profiling (pprof)</span>
+              </div>
+            </div>
+
+            <!-- CARD 2: Architecture & Protocols -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Architecture &amp; Protocols</h3>
+                  <p class="text-neutral-500 text-xs font-mono mt-0.5">System contracts &amp; service communication</p>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-[11px]">APIs</span>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">gRPC &amp; Protocol Buffers</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">RESTful APIs (Gin)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">Clean Architecture</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">API Gateway &amp; Routing</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-300">Token Bucket Rate Limiting</span>
+              </div>
+            </div>
+
+            <!-- CARD 3: Storage & Distributed Systems -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Storage &amp; Distributed Systems</h3>
+                  <p class="text-neutral-500 text-xs font-mono mt-0.5">Database integrity &amp; state synchronization</p>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-[11px]">Data</span>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">PostgreSQL (ACID &amp; Indexing)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">Redis (Distributed Locking &amp; Caching)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">Distributed Concurrency Control</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">Database Transactions (GORM)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-300">MongoDB</span>
+              </div>
+            </div>
+
+            <!-- CARD 4: Cloud & Platform Engineering -->
+            <div class="resumate-card p-7 sm:p-8 space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Cloud &amp; Platform Engineering</h3>
+                  <p class="text-neutral-500 text-xs font-mono mt-0.5">Containerization &amp; automated delivery</p>
+                </div>
+                <span class="px-2.5 py-0.5 rounded-full bg-blue-950/40 border border-blue-500/30 text-[#60a5fa] font-mono text-[11px]">Infra</span>
+              </div>
+              
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">Kubernetes (AWS EKS)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">Docker (Multi-Stage Builds)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-200">AWS (EC2, S3, IAM)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-[#3b82f6]">GitHub Actions (CI/CD)</span>
+                <span class="px-3 py-1.5 bg-[#161616] border border-[#222] rounded-lg text-xs font-mono text-neutral-300">Linux &amp; Bash Scripting</span>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+                <!-- ========================================== -->
+        <!-- SECTION 4: EDUCATION & TRAINING            -->
+        <!-- ========================================== -->
+        <section id="education" class="space-y-8">
+          
+          <!-- Consistent Section Pill -->
+          <div class="section-pill">
+            🎓 Education &amp; Training
+          </div>
+
+          <div class="space-y-5">
+            
+            <!-- Entry 1: Brototype -->
+            <div class="resumate-card p-7 sm:p-8 space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#1c1c1c] pb-4">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Backend Engineering Program</h3>
+                  <p class="text-[#3b82f6] font-mono text-xs mt-0.5 font-medium">Brototype &middot; Intensive Technical Residency</p>
+                </div>
+                <span class="text-neutral-400 font-mono text-xs self-start sm:self-auto bg-[#161616] px-3 py-1 rounded-full border border-[#222]">
+                  Sep 2024 &mdash; May 2026
+                </span>
+              </div>
+              <p class="text-neutral-400 text-xs sm:text-sm leading-relaxed max-w-3xl pt-1">
+                Rigorous project-driven curriculum focused on Go concurrency, Data Structures &amp; Algorithms, distributed systems design (HLD/LLD), microservice communication with gRPC, and container orchestration on AWS EKS. Subjected to weekly technical code reviews and architecture defenses.
+              </p>
+            </div>
+
+            <!-- Entry 2: Plus Two -->
+            <div class="resumate-card p-7 sm:p-8 space-y-3">
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1.5 border-b border-[#1c1c1c] pb-4">
+                <div>
+                  <h3 class="text-white font-bold text-lg font-display">Higher Secondary Education (Plus Two)</h3>
+                  <p class="text-neutral-400 font-mono text-xs mt-0.5">Kerala Board of Higher Secondary Education</p>
+                </div>
+                <span class="text-neutral-400 font-mono text-xs self-start sm:self-auto bg-[#161616] px-3 py-1 rounded-full border border-[#222]">
+                  Graduated Mar 2024
+                </span>
+              </div>
+              <p class="text-neutral-500 text-xs pt-1 font-mono">
+                Focus: Computer Science &amp; Commerce
+              </p>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- SECTION 5: CONTACT -->
+        <section id="contact" class="space-y-8 pt-4">
+          
+          <div class="section-pill">
+            ✉️ Contact
+          </div>
+
+          <div class="resumate-card p-8 sm:p-12 space-y-8">
+            <div class="space-y-3">
+              <h3 class="text-3xl sm:text-4xl font-bold text-white font-display">Have a complex backend problem to solve? Let’s connect.</h3>
+              <p class="text-neutral-400 text-base leading-relaxed max-w-2xl font-light">
+                I specialize in building robust Go backends where data consistency, reliability, and sub-second performance are non-negotiable. Currently exploring full-time backend engineering opportunities. Ready to relocate or join high-velocity remote teams immediately.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+              
+              <!-- Direct Email Card -->
+              <a 
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=mohammadniyas662@gmail.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="flex items-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#141414] border border-[#1f1f1f] hover:border-[#3b82f6]/50 transition group"
+              >
+                <div class="w-11 h-11 shrink-0 rounded-xl bg-[#1e1e1e] flex items-center justify-center text-neutral-300 group-hover:text-[#3b82f6] group-hover:scale-110 transition">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-neutral-500 text-[11px] font-mono uppercase tracking-wider">DIRECT EMAIL</div>
+                  <div class="text-white text-xs sm:text-sm font-medium mt-0.5 truncate group-hover:text-[#3b82f6] transition">mohammadniyas662@gmail.com</div>
+                </div>
+              </a>
+
+              <!-- Professional Network (LinkedIn) -->
+              <a 
+                href="https://linkedin.com/in/mohammad-niyas" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#141414] border border-[#1f1f1f] hover:border-[#3b82f6]/50 transition group"
+              >
+                <div class="w-11 h-11 shrink-0 rounded-xl bg-[#1e1e1e] flex items-center justify-center text-neutral-300 group-hover:text-[#3b82f6] group-hover:scale-110 transition">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-neutral-500 text-[11px] font-mono uppercase tracking-wider">PROFESSIONAL NETWORK</div>
+                  <div class="text-white text-xs sm:text-sm font-medium mt-0.5 truncate group-hover:text-[#3b82f6] transition">mohammad-niyas</div>
+                </div>
+              </a>
+
+              <!-- Code Repositories (GitHub) -->
+              <a 
+                href="https://github.com/Mohammad-Niyas" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="flex items-center gap-3.5 p-4 sm:p-5 rounded-2xl bg-[#141414] border border-[#1f1f1f] hover:border-[#3b82f6]/50 transition group"
+              >
+                <div class="w-11 h-11 shrink-0 rounded-xl bg-[#1e1e1e] flex items-center justify-center text-neutral-300 group-hover:text-[#3b82f6] group-hover:scale-110 transition">
+                  <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                </div>
+                <div class="min-w-0">
+                  <div class="text-neutral-500 text-[11px] font-mono uppercase tracking-wider">CODE REPOSITORIES</div>
+                  <div class="text-white text-xs sm:text-sm font-medium mt-0.5 truncate group-hover:text-[#3b82f6] transition">Mohammad-Niyas</div>
+                </div>
+              </a>
+
+            </div>
+          </div>
+
+          <!-- Footer -->
+          <footer class="pt-10 pb-6 text-xs font-mono text-neutral-500 border-t border-[#1a1a1a] flex flex-col sm:flex-row justify-between items-center gap-4">
+            <span>&copy; 2026 Mohammad Niyas. All rights reserved.</span>
+          </footer>
+
+        </section>
+
+      </main>
+
+    </div>
   </div>
+
+    <!-- Lightweight Typewriter State Machine (Zero-Dependency) -->
+  <script>
+    const phrases = ["Backend Engineer", "Golang Developer"];
+    let phraseIndex = 0;
+    let charIndex = phrases[0].length;
+    let isDeleting = true;
+    const typeSpeed = 90;      // Typing speed in ms
+    const deleteSpeed = 45;    // Deletion speed in ms
+    const holdDuration = 2200; // Time to pause on full phrase
+
+    const textEl = document.getElementById("typewriter-text");
+
+    function typeLoop() {
+      const currentPhrase = phrases[phraseIndex];
+
+      if (isDeleting) {
+        // Remove characters
+        textEl.textContent = currentPhrase.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        // Add characters
+        textEl.textContent = currentPhrase.substring(0, charIndex + 1);
+        charIndex++;
+      }
+
+      // State Transitions
+      if (!isDeleting && charIndex === currentPhrase.length) {
+        // Finished typing word: pause before deleting
+        isDeleting = true;
+        setTimeout(typeLoop, holdDuration);
+        return;
+      } else if (isDeleting && charIndex === 0) {
+        // Finished deleting: switch to next phrase and begin typing
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+        setTimeout(typeLoop, 400);
+        return;
+      }
+
+      // Schedule next character
+      const nextDelay = isDeleting ? deleteSpeed : typeSpeed;
+      setTimeout(typeLoop, nextDelay);
+    }
+
+    // Initialize once DOM is ready
+    if (textEl) {
+      setTimeout(typeLoop, holdDuration);
+    }
+  </script>
 </body>
 </html>
