@@ -55,12 +55,62 @@ html {
 
 /* Floating Dock Item */
 .nav-dock-item {
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  position: relative;
 }
 .nav-dock-item:hover {
   color: #3b82f6;
   transform: scale(1.15);
 }
+.nav-dock-item.active {
+  color: #3b82f6;
+}
+.nav-dock-item.active::after {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background-color: #3b82f6;
+  box-shadow: 0 0 8px #3b82f6;
+}
+
+/* Scroll Progress Bar at Top */
+#scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, #93c5fd);
+  z-index: 100;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+  transition: width 0.08s ease-out;
+  pointer-events: none;
+}
+
+/* Scroll Reveal Animations (Hardware-Accelerated) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 3D Tilt Container */
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
 /* Sleek Minimalist Dark Scrollbar (Eliminating Clunky Windows Default) */
 ::-webkit-scrollbar {
   width: 6px;
